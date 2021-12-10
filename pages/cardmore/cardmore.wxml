@@ -1,0 +1,21 @@
+<view class="cardmore-box" style="padding-left: 1vw;">
+  <view style="color:#5060d7;text-align: right;margin-right: 50rpx;height:80rpx;line-height: 80rpx;"
+    bindtap="editchange" wx:if="{{!isdetailinfo}}">
+    {{edit ? '取消编辑' : '编辑'}}
+  </view>
+  <image wx:for="{{detailinfo.cardimagesUrl}}" wx:key="key" mode="aspectFill" bindtap="previewCardImages"
+    data-img="{{detailinfo.cardimagesUrl.length > 0 ? baseUrl + item.url : '' }}"
+    data-current="{{detailinfo.cardimagesUrl.length > 0 ? detailinfo.cardimagesUrl : []}}"
+    style="width:32vw;height: 32vw;margin: 0 1vw 0 0;position: relative;" src="{{baseUrl + item.url }}">
+    <icon wx:if="{{edit}}" catchtap="deleteImages" data-item="{{item}}"
+      style="position: absolute;top:10rpx;right:10rpx;border-radius: 50%;background: #000000;" class="icon-small"
+      type="cancel" size="23"></icon>
+  </image>
+  <image wx:if="{{detailinfo.cardimagesUrl.length <= 0 && !edit}}" mode="aspectFill"
+    style="width:32vw;height: 32vw;margin: 0 1vw 0 0;position: relative;" src="/assets/icon/zwtp.jpg">
+  </image>
+  <image mode="aspectFill" wx:if="{{edit && detailinfo.cardimagesUrl.length < 9}}"
+    style="width:20vw;height: 20vw;margin: 6vw 7vw 6vw 6vw;" src="/assets/icon/addimage.png"
+    bindtap="upCardImagesClick">
+  </image>
+</view>

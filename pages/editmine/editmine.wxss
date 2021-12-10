@@ -1,0 +1,76 @@
+/* pages/editmine/editmine.wxss */
+.edit-box {
+  height: 100%;
+  width: 100%;
+}
+
+.edit-row {
+  width: 96vw;
+  height: 100rpx;
+  line-height: 115rpx;
+  display: flex;
+  margin: 0 2vw;
+  border-bottom: 1rpx solid #cdcdcd;
+}
+
+.edit-row-remark {
+  width: 96vw;
+  height: 200rpx;
+  line-height: 115rpx;
+  display: flex;
+  margin: 0 2vw;
+  border-bottom: 1rpx solid #cdcdcd;
+}
+
+.edit-row-avatar {
+  width: 96vw;
+  height: 170rpx;
+  line-height: 170rpx;
+  display: flex;
+  margin: 0 2vw;
+  border-bottom: 1rpx solid #cdcdcd;
+}
+
+.edit-row-left-remark {
+  height: 100%;
+  line-height: 115rpx;
+  width: 180rpx;
+  padding: 0 20rpx;
+}
+
+.edit-row-left {
+  height: 100%;
+  width: 180rpx;
+  padding: 0 20rpx;
+}
+
+.edit-row-center-avatar-image {
+  height: 150rpx;
+  width: 150rpx;
+  margin: 10rpx 0;
+  background: blueviolet;
+  border-radius: 15rpx;
+}
+
+.edit-row-center {
+  width: 0;
+  flex-grow: 1;
+  padding: 0 20rpx;
+  text-align: right;
+}
+
+.edit-row-right {
+  height: 100%;
+  width: 50rpx;
+}
+
+.edit-row-right-image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 35rpx;
+}
+.edit-row-right-avatar-image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 60rpx;
+}

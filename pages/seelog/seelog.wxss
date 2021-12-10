@@ -1,0 +1,69 @@
+.seelog-box {
+  height: 100%;
+  padding: 0 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.seelog-tabs-box {
+  height: 100rpx;
+  display: flex;
+  line-height: 100rpx;
+  color: #817a7a;
+  border-bottom: 1rpx solid #817a7a;
+}
+
+.seelog-tabs-item {
+  margin: 0 20rpx;
+}
+
+.seelog-tabs-content {
+  height: 0;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.seelog-content-child-box {
+  margin-top: 20rpx;
+  border: 1px solid #eaeaf4;
+  height: 200rpx;
+  display: flex;
+  box-shadow: 0 10rpx 20rpx #eaeaf4;
+}
+
+.seelog-content-child-photo {
+  height: 160rpx;
+  width: 160rpx;
+  background: yellow;
+  margin: 20rpx;
+}
+
+.seelog-content-child-right {
+  height: 100%;
+  text-align: left;
+  width: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.seelog-content-child-top {
+  height: 0;
+  flex-grow: 1;
+  font-size: 40rpx;
+  line-height: 150rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.seelog-content-child-bottom {
+  font-size: 35rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 100%;
+  margin: 0 20rpx 20rpx 0;
+}

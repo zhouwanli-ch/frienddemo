@@ -1,0 +1,106 @@
+<view class="edit-box">
+  <view wx:if="{{!isdetailinfo}}" style="color:#5060d7;text-align: right;margin-right: 50rpx;height:80rpx;line-height: 80rpx;"
+    bindtap="editchange">
+    {{edit ? '取消编辑' : '编辑'}}
+  </view>
+  <view class="edit-row-avatar" bindtap="upImgClick">
+    <view class="edit-row-left">
+      头像
+    </view>
+    <view class="edit-row-center">
+      <image class="edit-row-center-avatar-image"
+        src="{{detailinfo.xcxavatar ? baseUrl + detailinfo.xcxavatar : (detailinfo.avatarUrl ? detailinfo.avatarUrl : '/assets/icon/noimage.png') }}"
+        mode="scaleToFill" catchtap="previewImage"
+        data-img="{{detailinfo.xcxavatar ? baseUrl + detailinfo.xcxavatar : (detailinfo.avatarUrl ? detailinfo.avatarUrl : '') }}"
+        data-current="{{detailinfo.xcxavatar ? [baseUrl + detailinfo.xcxavatar] : (detailinfo.avatarUrl ? [detailinfo.avatarUrl] : [])}}" />
+    </view>
+    <view class="edit-row-right">
+      <image class="edit-row-right-avatar-image" src="../../assets/icon/more.png" mode="scaleToFill" />
+    </view>
+  </view>
+  <view class="edit-row">
+    <view class="edit-row-left">
+      昵称
+    </view>
+    <view class="edit-row-center">
+      <input style="height: 100%;" disabled="{{!edit}}" maxlength="12" placeholder="请输入昵称"
+        value="{{formObj.xcxname}}"  bindinput="xcxnameChange"/>
+    </view>
+    <view class="edit-row-right">
+    </view>
+  </view>
+  <view class="edit-row">
+    <view class="edit-row-left">
+      性别
+    </view>
+    <view class="edit-row-center">
+      <picker range='{{sexarray}}' disabled="{{!edit}}" value='{{idx}}' bindchange='sexChange' range-key="name"
+        data-id='{{sexarray[formObj.xcxsex].id}}'>
+        <view class='picker'>{{sexarray[formObj.xcxsex].name}}</view>
+      </picker>
+    </view>
+    <view class="edit-row-right">
+      <image wx:if="{{edit}}" class="edit-row-right-image" src="../../assets/icon/more.png" mode="scaleToFill" />
+    </view>
+  </view>
+  <view class="edit-row">
+    <view class="edit-row-left">
+      出生日期
+    </view>
+    <view class="edit-row-center">
+      <picker mode="date" value="{{formObj.xcxbornday}}" disabled="{{!edit}}" start="1949-10-01" end="{{gettime}}"
+        bindchange="bindDateChange" placeholder="请输入出生日期">
+        <view class="picker">
+          {{formObj.xcxbornday}}
+        </view>
+      </picker>
+    </view>
+    <view class="edit-row-right">
+      <image  wx:if="{{edit}}" class="edit-row-right-image" src="../../assets/icon/more.png" mode="scaleToFill" />
+    </view>
+  </view>
+  <view class="edit-row">
+    <view class="edit-row-left">
+      被看次数
+    </view>
+    <view class="edit-row-center">
+      {{formObj.xcxbesee ? formObj.xcxbesee : 0}} 次
+    </view>
+    <view class="edit-row-right">
+      <!-- <image  wx:if="{{edit}}" class="edit-row-right-image" src="../../assets/icon/more.png" mode="scaleToFill" /> -->
+    </view>
+  </view>
+  <!-- <view class="edit-row">
+    <view class="edit-row-left">
+      所属地址
+    </view>
+    <view class="edit-row-center">
+      <picker style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap" mode="multiSelector"
+        bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}"
+        range="{{multiArray}}">
+        <view class="picker">
+          当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+        </view>
+      </picker>
+    </view>
+    <view class="edit-row-right">
+      <image class="edit-row-right-image" src="../../assets/icon/more.png" mode="scaleToFill" />
+    </view>
+  </view> -->
+  <view class="edit-row-remark">
+    <view class="edit-row-left-remark">
+      扩列宣言
+    </view>
+    <view class="edit-row-center">
+      <textarea style="width: 100%;height: 100%;line-height: 50rpx;margin: 35rpx 0 10rpx 0;"
+        value="{{formObj.xcxremark}}" bindinput='xcxremarkChange' placeholder="请输入扩列宣言" disabled="{{!edit}}"
+        maxlength="30" bindblur="bindTextAreaBlur" />
+    </view>
+    <view class="edit-row-right">
+    </view>
+  </view>
+  <view wx:if="{{edit}}">
+    <button size="default" type="primary"
+      style="background: #5060d7;margin: 50rpx auto;line-height: 40rpx;width: 280rpx;" bindtap="saveinfo">保存</button>
+  </view>
+</view>

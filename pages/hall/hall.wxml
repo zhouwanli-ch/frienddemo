@@ -1,0 +1,46 @@
+<wxs src="/utils/filters.wxs" module="filters" />
+<calendar wx:if="{{showcalendar}}"></calendar>
+<view wx:else class="hall-box">
+  <view class="scrolltxt">
+    <image style="height: 50rpx;width: 50rpx;float: left;margin-top: 10rpx;" src="../../assets/icon/laba.png"
+      mode="scaleToFill" />
+    <view class="marquee_box">
+      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+        <text>{{text}}</text>
+        <text style="margin-right:{{marquee_margin}}px;"></text>
+        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>
+      </view>
+    </view>
+  </view>
+  <view>
+    <ad unit-id="adunit-387e73483ed12d03" ad-intervals="30"></ad>
+  </view>
+  <view class='water-fall'>
+    <view class="item-box" wx:for="{{userList}}" wx:key="key" wx:if="{{item.cardqrcodeUrl &&  item.xcxuserstate === 1}}"
+      bindtap="todetail" data-item="{{item}}">
+      <text class='tag' wx:if="{{filters.recommendshow(item.hallTime)}}">推荐</text>
+      <image class='pro-img' catchtap="previewImage" data-item="{{item}}" src="{{baseUrl + item.cardqrcodeUrl}}"
+        mode="aspectFit">
+      </image>
+      <view class='two-line-hide-txt'>{{item.xcxremark ? item.xcxremark : ''}}</view>
+      <view class='bt-info'>
+        <view class='user-info'>
+          <image class='user-icon'
+            src="{{item.xcxavatar ? baseUrl + item.xcxavatar : (item.avatarUrl ? item.avatarUrl : '../../assets/icon/noimage.png') }}">
+          </image>
+          <text class='user-nike'>{{item.xcxname}}</text>
+        </view>
+        <view class='zan-info'>
+          <image class='zan-icon'
+            src="{{item.xcxsex === 1 ? '/assets/icon/y.png' : (item.xcxsex === 2 ? '/assets/icon/x.png' :'/assets/icon/xy.png')}}">
+          </image>
+          <!-- <text class='zan-num'>{{item.count}}</text> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="top-message" catchtap="tohbb">
+    <!-- <image catchtap="topMessage" style="height: 100%;width: 100%;" src="../../assets/icon/topmessage.png" /> -->
+    点加扩列群
+  </view>
+</view>

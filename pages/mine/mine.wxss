@@ -1,0 +1,173 @@
+/* pages/mine/mine.wxss */
+.mine-head-card {
+  height: 300rpx;
+  background-image: linear-gradient(-20deg, #f3f3f3, #ffffff);
+  margin: 0 30rpx;
+  border-radius: 10rpx;
+  box-shadow: 10rpx 10rpx 5rpx #7dc5eb;
+}
+
+.mine-head-card-photo {
+  height: 80rpx;
+  width: 100%;
+  position: relative;
+}
+
+.mine-head-card-photo-box {
+  border-radius: 50%;
+  position: absolute;
+  position: relative;
+  top: -50rpx;
+  left: calc(50% - 65rpx);
+  height: 130rpx;
+  width: 130rpx;
+  border: 5rpx solid #f0f0f0;
+}
+
+.mine-head-card-sex-box {
+  height: 40rpx;
+  width: 40rpx;
+  border-radius: 50%;
+  position: absolute;
+  right: 5rpx;
+  bottom: 5rpx;
+}
+
+.mine-head-card-edit-box {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.mine-head-card-see-box {
+  position: absolute;
+  top: 20rpx;
+  left: 40rpx;
+  /* height: 40rpx;
+  width: 60rpx; */
+}
+
+.mine-head-card-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.mine-head-card-name {
+  margin: 10rpx;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.mine-head-card-other {
+  margin: 10rpx;
+  text-align: center;
+  overflow: hidden;
+  font-size: 26rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.mine-head-card-tell {
+  margin: 10rpx 100rpx;
+  max-height: 80rpx;
+  text-align: center;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: #5e5b5b;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.mine-content-card {
+  height: 680rpx;
+  background-image: linear-gradient(-20deg, #f3f3f3, #ffffff);
+  margin: 30rpx;
+  border-radius: 10rpx;
+  box-shadow: 10rpx 10rpx 5rpx #7dc5eb;
+  display: flex;
+  flex-direction: column;
+}
+
+.mine-content-card-title {
+  height: 55rpx;
+  line-height: 75rpx;
+  width: 100%;
+  color: #333333;
+  padding: 0rpx 0rpx 0rpx 20rpx;
+  display: flex;
+}
+
+.mine-content-card-title-word {
+  width: 0;
+  flex-grow: 1;
+  font-weight: bold;
+  height: 100%
+}
+
+.mine-content-card-title-more {
+  width: 140rpx;
+  height: 100%;
+  line-height: 35px;
+  display: flex;
+}
+
+.mine-content-card-title-more-image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 15rpx;
+}
+
+.mine-content-card-content {
+  height: 0;
+  flex-grow: 1;
+  display: flex;
+  display: flex;
+}
+
+.mine-content-card-content-left {
+  width: 0;
+  flex-grow: 1;
+  margin: 20rpx 15rpx 20rpx 20rpx;
+}
+
+.mine-content-card-content-right {
+  width: 250rpx;
+  margin: 20rpx 20rpx 20rpx 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mine-content-card-content-right-top {
+  flex-grow: 1;
+  height: 0;
+  margin-bottom: 15rpx;
+}
+
+.mine-content-card-content-right-bottom {
+  flex-grow: 1;
+  height: 0;
+}
+
+.mine-content-card-bottom {
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+}

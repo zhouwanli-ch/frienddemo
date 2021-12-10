@@ -1,0 +1,227 @@
+<view class="seelog-box" wx:if="{{!showcalendar}}">
+  <view class="seelog-tabs-box">
+    <view catchtap="changeActive" data-name='交友墙'
+      class="{{active === '交友墙' ? 'seelog-tabs-item active' : 'seelog-tabs-item'}}">交友墙</view>
+    <view catchtap="changeActive" data-name='扩列群'
+      class="{{active === '扩列群' ? 'seelog-tabs-item active' : 'seelog-tabs-item'}}">扩列群</view>
+    <view catchtap="changeActive" data-name='投稿站'
+      class="{{active === '投稿站' ? 'seelog-tabs-item active' : 'seelog-tabs-item'}}">投稿站</view>
+    <view catchtap="changeActive" data-name='投稿记录'
+      class="{{active === '投稿记录' ? 'seelog-tabs-item active' : 'seelog-tabs-item'}}">投稿记录</view>
+  </view>
+  <view>
+    <ad unit-id="adunit-387e73483ed12d03" ad-intervals="30"></ad>
+  </view>
+  <view class="seelog-tabs-content" wx:if="{{personlist.length > 0 && active === '交友墙'}}">
+    <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="lower" scroll-top="0">
+      <view class="seelog-content-child-box" wx:for="{{personlist}}" wx:key="key" data-item="{{item}}"
+        bindtap="toqrboxshow">
+        <view class="seelog-content-child-right">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="seelog-content-child-photo">
+          <image style="height: 100%;width:100%;" mode="aspectFill" src="/assets/icon/personicon.jpg" />
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="seelog-tabs-content" wx:if="{{grouplist.length > 0 && active === '扩列群'}}">
+    <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="lower" scroll-top="0">
+      <view class="seelog-content-child-box" wx:for="{{grouplist}}" wx:key="key" data-item="{{item}}"
+        bindtap="toqrboxshow">
+        <view class="seelog-content-child-right">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="seelog-content-child-photo">
+          <image style="height: 100%;width:100%;" mode="aspectFill" src="/assets/icon/groupicon.jpg" />
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="seelog-tabs-content" wx:if="{{active === '投稿站'}}">
+    <scroll-view scroll-y="true" style="height: 100%;" scroll-top="0">
+      <view style="padding: 0 4vw">
+        <view style="margin:0rpx 0 20rpx 0;">
+          <view>
+            <text selectable="true">
+              👳‍♂️ 管理员微信号：zwl382739709
+            </text>
+          </view>
+          <view>👮‍♂️ 所传稿件请遵守法律法规与微信相关规定，违规稿件将不予通过</view>
+        </view>
+        <view style="display: flex;height: 60rpx;line-height: 60rpx;">
+          <view style="background: #5060d7;width:10rpx;height: 40rpx;margin: 10rpx;border-radius: 40rpx;"></view>
+          <view style="flex-grow: 1;width: 0;height: 100%;font-weight: bold;font-size: 35rpx;">群投递</view>
+        </view>
+        <view style="display: flex;height: 60vw;">
+          <view style="flex-grow: 1;">
+            <view>
+              <image mode="aspectFill" style="width:40vw;height: 40vw;margin: 5vw 4vw"
+                src="../../assets/icon/groupicon0.jpg"></image>
+            </view>
+            <view style="text-align: center;">投递示意图</view>
+          </view>
+          <view style="flex-grow: 1;">
+            <view>
+              <image mode="aspectFill" style="width:30vw;height: 30vw;margin:10vw 9vw"
+                src=" {{formObj.groupimageurl ? baseUrl + formObj.groupimageurl : '../../assets/icon/addimage.png' }}"
+                data-type="group" bindtap="upCardImagesClick">
+              </image>
+            </view>
+            <view>
+              <button size="default" type="primary" style="background: #5060d7;line-height: 40rpx;width: 230rpx;"
+                bindtap="savegroup" data-type="group">
+                确认投递
+              </button>
+            </view>
+          </view>
+        </view>
+        <view style="display: flex;height: 60rpx;line-height: 60rpx;">
+          <view style="background: #5060d7;width:10rpx;height: 40rpx;margin: 10rpx;border-radius: 40rpx;"></view>
+          <view style="flex-grow: 1;width: 0;height: 100%;font-weight: bold;font-size: 35rpx;">个人投递</view>
+        </view>
+        <view style="display: flex;height: 60vw;">
+          <view style="flex-grow: 1;">
+            <view>
+              <image mode="aspectFill" style="width:40vw;height: 40vw;margin: 5vw 4vw"
+                src="../../assets/icon/personicon0.jpg"></image>
+            </view>
+            <view style="text-align: center;">投递示意图</view>
+          </view>
+          <view style="flex-grow: 1;">
+            <view>
+              <image mode="aspectFill" style="width:30vw;height: 30vw;margin:10vw 9vw"
+                src=" {{formObj.personimageurl ? baseUrl + formObj.personimageurl : '../../assets/icon/addimage.png' }}"
+                data-type="person" bindtap="upCardImagesClick">
+              </image>
+            </view>
+            <view>
+              <button size="default" type="primary" style="background: #5060d7;line-height: 40rpx;width: 230rpx;"
+                bindtap="savegroup" data-type="person">
+                确认投递
+              </button>
+            </view>
+          </view>
+        </view>
+
+        <view style="height: 100rpx;"></view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="seelog-tabs-content" wx:if="{{historylist.length > 0 && active === '投稿记录' && role === 'user'}}">
+    <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="lower" scroll-top="0">
+      <view class="seelog-content-history-child-box" wx:for="{{historylist}}" wx:key="key" data-item="{{item}}"
+        bindtap="previewImage" data-img="{{item.imageurl ? baseUrl + item.imageurl  : '' }}"
+        data-current="{{item.imageurl ? [baseUrl + item.imageurl] : []}}">
+        <image style="height: 80rpx;width:80rpx;border-radius: 80rpx;margin: 10rpx;" mode="aspectFill"
+          src="{{item.imageurl ? baseUrl + item.imageurl  : '/assets/icon/groupicon.jpg' }}" />
+        <view>
+          <view class="seelog-content-history-child-center">{{item.type === 'person' ? '个人扩列' : '群扩列'}}</view>
+          <view class="seelog-content-history-child-center">{{item.createTime}}</view>
+        </view>
+        <view class="seelog-content-history-child-right">
+          <text style="{{item.state === -1 ? 'color:red' : (item.state === 0 ? 'color:green' : '')}}">
+            {{item.state === 0 ? '审批中' :
+            (item.state === 1 ? '已通过' : '未通过' +
+            (item.opinion ? ' ( '+ item.opinion +' )': '')
+            )}}
+          </text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="seelog-tabs-content" wx:if="{{approvelist.length > 0 && active === '投稿记录' && role === 'admin'}}">
+    <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="lower" scroll-top="0">
+      <view class="seelog-content-history-child-box" wx:for="{{approvelist}}" wx:key="key" data-item="{{item}}"
+        bindtap="toapprove">
+        <image style="height: 80rpx;width:80rpx;border-radius: 80rpx;margin: 10rpx;" mode="aspectFill"
+          src="{{item.imageurl ? baseUrl + item.imageurl  : '/assets/icon/groupicon.jpg' }}" data-item="{{item}}"
+          catchtap="previewImage" data-img="{{item.imageurl ? baseUrl + item.imageurl  : '' }}"
+          data-current="{{item.imageurl ? [baseUrl + item.imageurl] : []}}" />
+        <view>
+          <view class="seelog-content-history-child-center">{{item.type === 'person' ? '个人扩列' : '群扩列'}}</view>
+          <view class="seelog-content-history-child-center">{{item.createTime}}</view>
+        </view>
+        <view class="seelog-content-history-child-right">
+          <text style="{{item.state === -1 ? 'color:red' : (item.state === 0 ? 'color:green' : '')}}">
+            {{item.state === 0 ? '审批中' :
+            (item.state === 1 ? '已通过' : '未通过' +
+            (item.opinion ? ' ( '+ item.opinion +' )': '')
+            )}}
+          </text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view style="text-align: center;margin-top: 20rpx;" wx:if="{{grouplist.length <= 0  && active === '扩列群'}}">暂无数据
+  </view>
+  <view style="text-align: center;margin-top: 20rpx;" wx:if="{{personlist.length <= 0  && active === '交友墙'}}">暂无数据
+  </view>
+  <view style="text-align: center;margin-top: 20rpx;"
+    wx:if="{{historylist.length <= 0 && active === '投稿记录' && role === 'user'}}">
+    暂无数据
+  </view>
+  <view style="text-align: center;margin-top: 20rpx;"
+    wx:if="{{approvelist.length <= 0 && active === '投稿记录' && role === 'admin'}}">
+    暂无审批数据
+  </view>
+</view>
+<view wx:if="{{showcalendar}}">
+  <view style="text-align: center;">当前时间钟表</view>
+  <view style="display: {{flag}};">
+    <view class="warp">
+      <view class="div1">
+        <!-- 时 -->
+        <view class="h" style="transform: rotateZ({{hdeg}}deg);"></view>
+        <!-- 分 -->
+        <view class="m" style="transform: rotateZ({{mdeg}}deg);"></view>
+        <!-- 秒 -->
+        <view class="s" style="transform: rotateZ({{sdeg}}deg);"></view>
+        <!-- 中点 -->
+        <view class=" div1_3"></view>
+        <!-- 刻度 -->
+        <view class="div1-4 d0">
+          <view class="left"></view>
+          <view class="right"></view>
+        </view>
+        <view class="div1-4 d1">
+          <view class="left"></view>
+          <view class="right"></view>
+        </view>
+        <view class="div1-4 d2">
+          <view class="left"></view>
+          <view class="right"></view>
+        </view>
+        <view class="div1-4 d3">
+          <view class="left"></view>
+          <view class="right"></view>
+        </view>
+        <view class="div1-4 d4">
+          <view class="left"></view>
+          <view class="right"></view>
+        </view>
+        <view class="div1-4 d5">
+          <view class="left"></view>
+          <view class="right"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="text1">北京时间</view>
+    <view class="currentTime">{{currentTime}}</view>
+  </view>
+</view>
+
+<modal hidden="{{hiddenmodalput}}" title="审批" confirm-text="提交" cancel-text="取消" bindcancel="approvecancel"
+  bindconfirm="approveconfirm">
+  <radio-group bindchange="radioChange">
+    <label class="weui-cell weui-check__label" wx:for="{{approveitems}}" wx:key="key">
+      <view class="weui-cell__hd">
+        <radio value="{{item.value}}" checked="true" />
+      </view>
+      <view class="weui-cell__bd">{{item.name}}</view>
+    </label>
+  </radio-group>
+  <input wx:if="{{approvechoose === 'unpass'}}" type='text' value="{{opinion}}" placeholder="请输入原因" auto-focus
+    bindinput="opinionChange" />
+</modal>

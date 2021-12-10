@@ -1,0 +1,57 @@
+<view class="seelog-box">
+  <view class="seelog-tabs-box">
+    <view class="seelog-tabs-item" catchtap="changeActive" data-name='谁看过我'
+      style="{{active === '谁看过我' ? 'color:#000000;font-weight:bold;' : ''}}">谁看过我</view>
+    <view class="seelog-tabs-item" catchtap="changeActive" data-name='我看过谁'
+      style="{{active === '我看过谁' ? 'color:#000000;font-weight:bold;' : ''}}">我看过谁</view>
+  </view>
+  <view class="seelog-tabs-content" wx:if="{{seeloglist.length > 0 && active === '谁看过我'}}">
+    <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="lower" scroll-top="0">
+      <view class="seelog-content-child-box" wx:for="{{seeloglist}}" wx:key="key" bindtap="todetail" data-item="{{item}}">
+        <view class="seelog-content-child-photo">
+          <image style="height: 100%;width:100%;" mode="scaleToFill" catchtap="previewImage"
+            data-img="{{item.seepersonxcxavatar ? baseUrl + item.seepersonxcxavatar : (item.seepersonxcxavatarUrl ? item.seepersonxcxavatarUrl : '') }}"
+            data-current="{{item.seepersonxcxavatar ? [baseUrl + item.seepersonxcxavatar] : (item.seepersonxcxavatarUrl ? [item.seepersonxcxavatarUrl] : [])}}"
+            src="{{item.seepersonxcxavatar ? baseUrl + item.seepersonxcxavatar : (item.seepersonxcxavatarUrl ? item.seepersonxcxavatarUrl : '/assets/icon/noimage.png') }}" />
+        </view>
+        <view class="seelog-content-child-right">
+          <view class="seelog-content-child-top">
+            <image style="width: 35rpx;height: 35rpx;margin-right: 15rpx;"
+              src="{{item.seepersonxcxsex === 1 ? '/assets/icon/y.png' : (item.seepersonxcxsex === 2 ? '/assets/icon/x.png' :'/assets/icon/xy.png')}}">
+            </image>
+            <text>{{item.seepersonxcxname}}</text>
+          </view>
+          <view class="seelog-content-child-bottom">
+            {{item.createTime}}
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+  <view class="seelog-tabs-content" wx:if="{{seeloglist.length > 0 && active === '我看过谁'}}">
+    <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="lower" scroll-top="0">
+      <view class="seelog-content-child-box" wx:for="{{seeloglist}}" wx:key="key" bindtap="todetail" data-item="{{item}}">
+        <view class="seelog-content-child-photo">
+          <image style="height: 100%;width:100%;" mode="scaleToFill" catchtap="previewImage"
+            data-img="{{item.beseepersonxcxavatar ? baseUrl + item.beseepersonxcxavatar : (item.beseepersonxcxavatarUrl ? item.beseepersonxcxavatarUrl : '') }}"
+            data-current="{{item.beseepersonxcxavatar ? [baseUrl + item.beseepersonxcxavatar] : (item.beseepersonxcxavatarUrl ? [item.beseepersonxcxavatarUrl] : [])}}"
+            src="{{item.beseepersonxcxavatar ? baseUrl + item.beseepersonxcxavatar : (item.beseepersonxcxavatarUrl ? item.beseepersonxcxavatarUrl : '/assets/icon/noimage.png') }}" />
+        </view>
+        <view class="seelog-content-child-right">
+          <view class="seelog-content-child-top">
+            <image style="width: 35rpx;height: 35rpx;margin-right: 15rpx;"
+              src="{{item.beseepersonxcxsex === 1 ? '/assets/icon/y.png' : (item.beseepersonxcxsex === 2 ? '/assets/icon/x.png' :'/assets/icon/xy.png')}}">
+            </image>
+            <text>{{item.beseepersonxcxname}}</text>
+          </view>
+          <view class="seelog-content-child-bottom">
+            {{item.createTime}}
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+  <view style="text-align: center;margin-top: 20rpx;" wx:if="{{seeloglist.length <= 0}}">暂无数据</view>
+</view>

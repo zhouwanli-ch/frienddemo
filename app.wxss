@@ -1,0 +1,27 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+page {
+  height: 100%;
+  width: 100%;
+}
+
+.page-box {
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(-20deg, #7dc5eb, #f6f6f6);
+}

@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/blackboard/blackboard",
+    "pages/hall/hall",
+    "pages/qrboxshow/qrboxshow",
+    "pages/mine/mine",
+    "pages/editmine/editmine",
+    "pages/seelog/seelog",
+    "pages/cardmore/cardmore",
+    "pages/persondetail/persondetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "color": "#cdcdcd",
+    "selectedColor": "#7dc5eb",
+    "list": [
+      {
+        "pagePath": "pages/blackboard/blackboard",
+        "text": "黑板报",
+        "iconPath": "assets/icon/heiban.png",
+        "selectedIconPath": "assets/icon/heibaning.png"
+      },
+      {
+        "pagePath": "pages/hall/hall",
+        "text": "圈子",
+        "iconPath": "assets/icon/kuolieed.png",
+        "selectedIconPath": "assets/icon/kuolieing.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "assets/icon/wodeed.png",
+        "selectedIconPath": "assets/icon/wodeing.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "calendar": "components/calendar/calendar"
+  }
+}

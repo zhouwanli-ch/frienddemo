@@ -1,0 +1,66 @@
+var backAge = function (xcxbornday) {
+  var age = (getDate().getFullYear()) - getDate(xcxbornday).getFullYear()
+  var nowmouth = getDate().getMonth() + 1
+  var mymouth = getDate(xcxbornday).getMonth() + 1
+  var nowdate = getDate().getDate()
+  var mydate = getDate(xcxbornday).getDate()
+  if (nowmouth > mymouth) {
+    return age
+  } else if (nowmouth === mymouth) {
+    if (nowdate >= mydate) {
+      return age
+    } else {
+      return age - 1
+    }
+  } else {
+    return age - 1;
+  }
+}
+var starSeat = function (xcxbornday) {
+  var mymouth = getDate(xcxbornday).getMonth() + 1
+  var mydate = getDate(xcxbornday).getDate()
+  if ((mymouth === 1 && mydate >= 20) || (mymouth === 2 && mydate <= 18)) {
+    return '水瓶座';
+  } else if ((mymouth === 2 && mydate >= 19) || (mymouth === 3 && mydate <= 20)) {
+    return '双鱼座';
+  } else if ((mymouth === 3 && mydate >= 21) || (mymouth === 4 && mydate <= 19)) {
+    return '白羊座';
+  } else if ((mymouth === 4 && mydate >= 20) || (mymouth === 5 && mydate <= 20)) {
+    return '金牛座';
+  } else if ((mymouth === 5 && mydate >= 21) || (mymouth === 6 && mydate <= 21)) {
+    return '双子座';
+  } else if ((mymouth === 6 && mydate >= 22) || (mymouth === 7 && mydate <= 22)) {
+    return '巨蟹座';
+  } else if ((mymouth === 7 && mydate >= 23) || (mymouth === 8 && mydate <= 22)) {
+    return '狮子座';
+  } else if ((mymouth === 8 && mydate >= 23) || (mymouth === 9 && mydate <= 22)) {
+    return '处女座';
+  } else if ((mymouth === 9 && mydate >= 23) || (mymouth === 10 && mydate <= 23)) {
+    return '天秤座';
+  } else if ((mymouth === 10 && mydate >= 24) || (mymouth === 11 && mydate <= 22)) {
+    return '天蝎座';
+  } else if ((mymouth === 11 && mydate >= 23) || (mymouth === 12 && mydate <= 21)) {
+    return '射手座';
+  } else if ((mymouth === 12 && mydate >= 22) || (mymouth === 1 && mydate <= 19)) {
+    return '摩羯座';
+  } else {
+    return '未知星座';
+  }
+}
+var backday = function () {
+  var myDate_1 = getDate().getDate()
+  return myDate_1
+}
+var recommendshow = function (hallTime) {
+  if(Date.parse(getDate()) - Date.parse(getDate(hallTime)) >= 10*60*1000){
+    return false
+  }else{
+    return true
+  }
+}
+module.exports = {
+  backAge: backAge,
+  starSeat: starSeat,
+  backday: backday,
+  recommendshow:recommendshow
+};

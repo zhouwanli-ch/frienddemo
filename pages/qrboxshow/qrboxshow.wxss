@@ -1,0 +1,5 @@
+/* pages/qrboxshow/qrboxshow.wxss */
+.qrboxshow-box{
+  height: 100%;
+  width: 100%;
+}

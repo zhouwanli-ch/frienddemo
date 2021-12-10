@@ -1,0 +1,255 @@
+.seelog-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.seelog-tabs-box {
+  height: 100rpx;
+  display: flex;
+  color: #817a7a;
+  border-top: 1px solid #f2f5fa;
+  border-bottom: 1px solid #f2f5fa;
+}
+
+.seelog-tabs-item {
+  flex-grow: 1;
+  line-height: 90rpx;
+  text-align: center;
+  margin: 5px 5px;
+  position: relative;
+  /* background: #cdcdcd; */
+}
+
+.seelog-tabs-content {
+  height: 0;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.active {
+  color: #000000;
+  font-weight: bold;
+}
+
+.active::after {
+  content: '';
+  width: 60rpx;
+  position: absolute;
+  height: 7rpx;
+  background: #5060d7;
+  border-radius: 60rpx;
+  left: 50%;
+  margin-left: -30rpx;
+  bottom: 0px;
+}
+
+.seelog-content-child-box {
+  margin-top: 20rpx;
+  border: 1px solid #eaeaf4;
+  height: 200rpx;
+  display: flex;
+  box-shadow: 0 10rpx 20rpx #eaeaf4;
+}
+
+.seelog-content-history-child-box {
+  margin-top: 20rpx;
+  border: 1px solid #eaeaf4;
+  height: 100rpx;
+  display: flex;
+  box-shadow: 0 10rpx 20rpx #eaeaf4;
+}
+
+.seelog-content-child-photo {
+  height: 180rpx;
+  width: 180rpx;
+  margin: 10rpx;
+}
+
+.seelog-content-child-right {
+  height: 100%;
+  line-height: 200rpx;
+  padding: 0 30rpx;
+  text-align: left;
+  width: 0;
+  flex-grow: 1;
+  background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-background-size: 200% 100%;
+  -webkit-animation: maskedAnimation 4s infinite linear;
+}
+
+@keyframes maskedAnimation {
+	0% {
+    background-position: 0 0;
+	}
+	100% {
+	    background-position: -100% 0;
+	}
+}
+
+.seelog-content-history-child-center {
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: left;
+}
+
+.seelog-content-history-child-right {
+  height: 100%;
+  line-height: 20rpx;
+  padding: 0 30rpx;
+  text-align: right;
+  width: 0;
+  flex-grow: 1;
+}
+
+/* pages/clock/clock.wxss */
+/*设置时钟的样子*/
+/*最外面的边框*/
+.warp {
+  width: 600rpx;
+  height: 600rpx;
+  /*给大的外面设置了一个从中心点的渐变*/
+  background: radial-gradient(circle, white, black, red);
+  margin: 50rpx auto;
+  border-radius: 295rpx;
+}
+
+/*时钟里面*/
+.div1 {
+  width: 500rpx;
+  height: 500rpx;
+  background: lavender;
+  position: relative;
+  top: 50rpx;
+  left: 50rpx;
+  border-radius: 250rpx;
+}
+
+.h {
+  /*作为时针*/
+  width: 20rpx;
+  height: 100rpx;
+  background: black;
+  position: absolute;
+  top: 150rpx;
+  left: 240rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  /*指定旋转的中心*/
+  transform-origin: bottom center;
+  /* animation: rotate360deg 43200s linear infinite; */
+}
+
+.m {
+  /*作为分针*/
+  width: 15rpx;
+  height: 160rpx;
+  background: black;
+  position: absolute;
+  top: 90rpx;
+  left: 242rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  /*指定旋转的中心*/
+  transform-origin: bottom center;
+  /* animation: rotate360deg 3600s linear infinite; */
+}
+
+.s {
+  /*作为秒针*/
+  width: 10rpx;
+  height: 200rpx;
+  background: red;
+  position: absolute;
+  top: 50rpx;
+  left: 240rpx;
+  border-top-left-radius: 5rpx;
+  border-top-right-radius: 5rpx;
+  /*指定旋转的中心为左边*/
+  transform-origin: bottom center;
+  /*时间为60s */
+  /* animation: rotate360deg 60s steps(60) infinite; */
+}
+
+.div1_3 {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  top: 230rpx;
+  left: 230rpx;
+  background: yellow;
+}
+
+.div1-4 {
+  width: 500rpx;
+  height: 5rpx;
+  /*background: red;*/
+  position: absolute;
+  top: 250rpx;
+  /*把它设置成一个弹性盒子，并且让子元素两边对齐*/
+  display: flex;
+  justify-content: space-between;
+}
+
+/*用旋转把一个圆分成12等分*/
+.d1 {
+  transform: rotateZ(90deg);
+}
+
+.d2 {
+  transform: rotateZ(30deg);
+}
+
+.d3 {
+  transform: rotateZ(60deg);
+}
+
+.d4 {
+  transform: rotateZ(120deg);
+}
+
+.d5 {
+  transform: rotateZ(150deg);
+}
+
+.left {
+  width: 20rpx;
+  height: 5rpx;
+  background: black;
+}
+
+.right {
+  width: 20rpx;
+  height: 5rpx;
+  background: black;
+}
+
+.d0>div,
+.d1>div {
+  height: 10rpx;
+  width: 35rpx;
+}
+
+/* 不采取动画，通过定时调用函数动态显示当前时间 */
+/*让时针分针和秒针绕右边旋转360deg*/
+/* @keyframes rotate360deg {
+  from {}
+
+  to {
+    transform: rotateZ(360deg);
+  }
+} */
+
+.text1 {
+  text-align: center;
+  font-size: x-large;
+  margin: 100rpx 0 50rpx;
+}
+
+.currentTime {
+  text-align: center;
+  font-size: xx-large;
+}

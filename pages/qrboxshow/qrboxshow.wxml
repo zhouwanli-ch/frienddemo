@@ -1,0 +1,20 @@
+<view class="qrboxshow-box">
+  <view>
+    <ad unit-id="adunit-387e73483ed12d03" ad-intervals="30"></ad>
+  </view>
+  <view
+    style="font-size:20rpx;height: auto;padding: 2.5vw 2.5vw 2.5vw 2.5vw;margin-bottom:30rpx;border-bottom: 3rpx solid #eaeaf4;">
+    <view>🈸 图片（照片）以及二维码来自网友自主投稿分享，有些二维码可能已经失效，如有失效的可以扫描其它二维码。</view>
+    <view>🈸 图中内容以及二维码均与本小程序无关，无法判断其真实性，扫码加人加群请自行斟酌，注意分辨，谨防上当受骗，不要给陌生人转账！本小程序仅作搜集整理。</view>
+    <view>🈸 请遵守平台相关规则、相关法律法规，规范使用。如有侵权，请联系删除。</view>
+  </view>
+  <view>
+    <view style="float: left;width:30vw;height:30vw;margin: 0 0 2.5vw 2.5vw;" wx:for="{{showlist}}" wx:key="key">
+      <image mode="aspectFill" style="width:100%;height: 100%;"
+        src="{{item.imageurl ? baseUrl + item.imageurl : '../../assets/icon/zwtp.jpg' }}"
+        data-img="{{item.imageurl ? baseUrl + item.imageurl : '' }}" data-current="{{showlist}}"
+        bindtap="previewCardImages">
+      </image>
+    </view>
+  </view>
+</view>

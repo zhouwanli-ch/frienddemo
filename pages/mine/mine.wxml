@@ -1,0 +1,122 @@
+<!--pages/mine/mine.wxml-->
+<wxs src="/utils/filters.wxs" module="filters" />
+<view class="page-box" wx:if="{{!showcalendar && userInfo.xcxuserstate !== -1}}">
+  <view style="height: 70rpx;"></view>
+  <view class="mine-head-card" bindtap="toEditMine">
+    <view class="mine-head-card-photo">
+      <view class="mine-head-card-see-box" catchtap="toseelog">
+        <image class="mine-head-card-image" style="height: 40rpx;width: 60rpx;margin: 0 auto;" mode="scaleToFill"
+          src="/assets/icon/see.png" />
+        <view style="font-size:28rpx;text-align: center;">{{userInfo.xcxbesee ? userInfo.xcxbesee : 0}}次</view>
+      </view>
+      <view class="mine-head-card-photo-box">
+        <image class="mine-head-card-image" mode="scaleToFill" catchtap="previewImage"
+          data-img="{{userInfo.xcxavatar ? baseUrl + userInfo.xcxavatar : (userInfo.avatarUrl ? userInfo.avatarUrl : '') }}"
+          data-current="{{userInfo.xcxavatar ? [baseUrl + userInfo.xcxavatar] : (userInfo.avatarUrl ? [userInfo.avatarUrl] : [])}}"
+          src="{{userInfo.xcxavatar ? baseUrl + userInfo.xcxavatar : (userInfo.avatarUrl ? userInfo.avatarUrl : '/assets/icon/noimage.png') }}" />
+        <view class="mine-head-card-sex-box">
+          <image class="mine-head-card-image"
+            src="{{userInfo.xcxsex === 1 ? '/assets/icon/y.png' : (userInfo.xcxsex === 2 ? '/assets/icon/x.png' :'/assets/icon/xy.png')}}"
+            mode="scaleToFill" />
+        </view>
+      </view>
+      <view class="mine-head-card-edit-box">
+        <image class="mine-head-card-image" mode="scaleToFill" src="/assets/icon/edit.png" catchtap="toEditMine" />
+      </view>
+    </view>
+    <view class="mine-head-card-name">
+      {{userInfo.xcxname ? userInfo.xcxname : '用户名'}}
+    </view>
+    <view class="mine-head-card-other">
+      <text>{{userInfo.xcxbornday && userInfo.xcxbornday !=='保密' ? filters.backAge(userInfo.xcxbornday) + '岁' :
+        "年龄保密"}} </text>
+      <text>丨 {{filters.starSeat(userInfo.xcxbornday)}} </text>
+      <!-- <text>丨 {{userInfo.xcxcountry || userInfo.xcxcountry || userInfo.xcxcountry ? userInfo.xcxcountry +
+        userInfo.xcxprovince + userInfo.xcxcity : '未知城市'}}</text> -->
+    </view>
+    <view class="mine-head-card-tell">
+      {{userInfo.xcxremark ? userInfo.xcxremark : '请设置宣言'}}
+    </view>
+  </view>
+  <view class="mine-content-card">
+    <view class="mine-content-card-title">
+      <view class="mine-content-card-title-word">
+        <switch checked="{{userInfo.xcxuserstate === 1 ? true : false}}" bindchange="xcxuserstateChange" />
+        {{userInfo.xcxuserstate === 1 ? "信息展示" : '信息未展示'}}
+      </view>
+      <view class="mine-content-card-title-more" bindtap="toCardMore">
+        <text>更多</text>
+        <image class="mine-content-card-title-more-image" src="../../assets/icon/more.png" mode="scaleToFill" />
+      </view>
+    </view>
+    <view class="mine-content-card-content">
+      <view class="mine-content-card-content-left">
+        <image style="width:100%;height:100%" mode="aspectFit" bindtap="previewImage"
+          data-img="{{userInfo.cardqrcodeUrl ? baseUrl + userInfo.cardqrcodeUrl : '' }}"
+          data-current="{{userInfo.cardqrcodeUrl ? [baseUrl + userInfo.cardqrcodeUrl] : [] }}"
+          src="{{userInfo.cardqrcodeUrl ? baseUrl + userInfo.cardqrcodeUrl : '/assets/icon/zwtp.jpg' }}" />
+      </view>
+      <view class="mine-content-card-content-right">
+        <view class="mine-content-card-content-right-top">
+          <image style="width:100%;height:100%" mode="aspectFill" bindtap="previewCardImages"
+            data-img="{{userInfo.cardimagesUrl.length > 0 ? baseUrl + userInfo.cardimagesUrl[userInfo.cardimagesUrl.length - 1].url : '' }}"
+            data-current="{{userInfo.cardimagesUrl.length > 0 ? userInfo.cardimagesUrl : []}}"
+            src="{{userInfo.cardimagesUrl.length > 0 ? baseUrl + userInfo.cardimagesUrl[userInfo.cardimagesUrl.length - 1].url : '/assets/icon/zwtp.jpg' }}" />
+        </view>
+        <view class="mine-content-card-content-right-bottom">
+          <image style="width:100%;height:100%" mode="aspectFill" bindtap="previewCardImages"
+            data-img="{{userInfo.cardimagesUrl.length > 1 ? baseUrl + userInfo.cardimagesUrl[userInfo.cardimagesUrl.length - 2].url : '' }}"
+            data-current="{{userInfo.cardimagesUrl.length > 1 ? userInfo.cardimagesUrl : []}}"
+            src="{{userInfo.cardimagesUrl.length > 1 ? baseUrl + userInfo.cardimagesUrl[userInfo.cardimagesUrl.length - 2].url : '/assets/icon/zwtp.jpg' }}" />
+        </view>
+      </view>
+    </view>
+    <view class="mine-content-card-bottom">
+      <button size="default" type="primary" style="margin: 10rpx 20rpx 10rpx 40rpx;line-height: 30rpx;"
+        bindtap="upCardQrCodeClick">上传二维码</button>
+      <button size="default" type="primary"
+        style="background: #5060d7;margin: 10rpx 40rpx 10rpx 20rpx;line-height: 30rpx;"
+        bindtap="upCardImagesClick">上传照片</button>
+    </view>
+  </view>
+  <view style="margin: 0 20rpx 20rpx 20rpx;">
+    <view>
+      <text selectable="true">
+        👳‍♂️ 问题反馈或需要小程序开发，欢迎联系管理员
+      </text>
+    </view>
+    <view>
+      <text selectable="true">
+        👳‍♂️ 管理员微信号：zwl382739709
+      </text>
+    </view>
+  </view>
+</view>
+<view class="mine-head-card" style="margin-top: 200rpx;" wx:else>
+  <view class="mine-head-card-photo">
+    <view class="mine-head-card-photo-box">
+      <image class="mine-head-card-image" mode="scaleToFill" catchtap="previewImage"
+        data-img="{{userInfo.xcxavatar ? baseUrl + userInfo.xcxavatar : (userInfo.avatarUrl ? userInfo.avatarUrl : '') }}"
+        data-current="{{userInfo.xcxavatar ? [baseUrl + userInfo.xcxavatar] : (userInfo.avatarUrl ? [userInfo.avatarUrl] : [])}}"
+        src="{{userInfo.xcxavatar ? baseUrl + userInfo.xcxavatar : (userInfo.avatarUrl ? userInfo.avatarUrl : '/assets/icon/noimage.png') }}" />
+      <view class="mine-head-card-sex-box">
+        <image class="mine-head-card-image"
+          src="{{userInfo.xcxsex === 1 ? '/assets/icon/y.png' : (userInfo.xcxsex === 2 ? '/assets/icon/x.png' :'/assets/icon/xy.png')}}"
+          mode="scaleToFill" />
+      </view>
+    </view>
+  </view>
+  <view class="mine-head-card-name">
+    {{userInfo.xcxname ? userInfo.xcxname : '用户名'}}
+  </view>
+  <view class="mine-head-card-other">
+    <text>{{userInfo.xcxbornday && userInfo.xcxbornday !=='保密' ? filters.backAge(userInfo.xcxbornday) + '岁' :
+      "年龄保密"}} </text>
+    <text>丨 {{filters.starSeat(userInfo.xcxbornday)}} </text>
+  </view>
+  <view class="mine-head-card-tell">
+    记录新的一天
+  </view>
+</view>
+<view wx:if="{{userInfo.xcxuserstate === -1}}" style="margin: 50rpx;font-size: 30rpx;">
+  账号已被封禁，如有异议，请联系管理员微信号：zwl382739709</view>
